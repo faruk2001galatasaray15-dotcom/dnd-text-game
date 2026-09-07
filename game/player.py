@@ -100,7 +100,8 @@ class Player:
     
     def _update_hp(self):
         """Recalculate maximum HP"""
-        con_mod = calculate_modifier(self.abilities["CON"])\n        self.max_hp = self.character_class.get_hit_points(con_mod, self.level)
+        con_mod = calculate_modifier(self.abilities["CON"])
+        self.max_hp = self.character_class.get_hit_points(con_mod, self.level)
         if self.current_hp > self.max_hp:
             self.current_hp = self.max_hp
     
@@ -215,21 +216,21 @@ class Player:
     def display_sheet(self):
         """Display character sheet"""
         print(f"\n{'='*60}")
-        print(f\"CHARACTER SHEET: {self.name}\".center(60))
-        print(f\"{'='*60}\\n\")
+        print(f"CHARACTER SHEET: {self.name}".center(60))
+        print(f"{'='*60}\n")
         
-        print(f\"Class: {self.character_class.name:20} Level: {self.level}\")
-        print(f\"Experience: {self.experience:20} Proficiency Bonus: +{self.proficiency_bonus}\\n\")
+        print(f"Class: {self.character_class.name:20} Level: {self.level}")
+        print(f"Experience: {self.experience:20} Proficiency Bonus: +{self.proficiency_bonus}\n")
         
-        print(\"ABILITY SCORES:\")
-        print(\"-\" * 40)
+        print("ABILITY SCORES:")
+        print("-" * 40)
         for ability, score in self.abilities.items():
             mod = calculate_modifier(score)
-            print(f\"{ability}: {score:2d} ({mod:+3d})\")
+            print(f"{ability}: {score:2d} ({mod:+3d})")
         
-        print(f\"\\nAC: {self.armor_class:20} HP: {self.current_hp}/{self.max_hp}\\n\")
+        print(f"\nAC: {self.armor_class:20} HP: {self.current_hp}/{self.max_hp}\n")
         
         if self.equipped_weapon:
-            print(f\"Equipped Weapon: {self.equipped_weapon.get('name')}\")
+            print(f"Equipped Weapon: {self.equipped_weapon.get('name')}")
         if self.equipped_armor:
-            print(f\"Equipped Armor: {self.equipped_armor.get('name')}\\n\")
+            print(f"Equipped Armor: {self.equipped_armor.get('name')}\n")
